@@ -1,77 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>I don't even</title>
-<link rel="stylesheet" type="text/css" href="start.css">
-<script type="text/javascript" src="jquery-1.9.0.min.js">
-</script>
-<script >
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>I don't even</title>
+    <link rel="stylesheet" type="text/css" href="start.css">
+      <script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+      <script type="text/javascript" src="xserror.js"></script>
 
-var txt;
-var txt1;
-var txt2="foo";
-var txt3;
-var prevBt="undefined";
-$(document).ready(function(){
+    </head>
 
-
-function loadfail(){
-  alert("Fakkapp!");
- }
- 
-function parse(xml){
-$("#output").append("ya");
- $(this).find("text").each(function(){
-     $("#output").empty();
-	 $("#output").append($(this).find('text').text());
-  });
- //$("#output").append("yo");
- //$("#output").append($(this).find('text').text());
- }
-
-  $("button").click(function(){
-
-
-$(this).fadeTo(1000,0.5);//fades out currently pressed button
-
-$("#"+prevBt).fadeTo(1000,1);//fade in previous button
-
-//$("#output").load("tekst.txt");
-
-$.ajax({
-	type: "GET", 
-	URL:"www.xserror.com/stuff.xml", 
-	dataType:"html", 
-	success: parse,
-	error: loadfail
+    <body>
+      <div id="header"> 
 	
-	});
-prevBt=this.id;//sets previous button
-//$("#output").html(txt);
+	<h1>Black soup, green peas</h1>
+	<ul>
+	  <li><button type="button" id="one" >Dave</button></li>
+	  <li><button type="button" id="two" >emo</button></li>
+	  <li><button type="button" id="three" >Quality</button></li>
+	</ul>
 
-  });
-});
-</script>
+      </div>
 
-
-</head>
-
-<body>
-<div id="header"> 
-	
-<h1>Black soup, green peas</h1>
-<ul>
-    <li><button type="button" id="one" >Dave</button></li>
-    <li><button type="button" id="two" >emo</button></li>
-    <li><button type="button" id="three" >Quality</button></li>
-</ul>
-
-</div>
-
-<div id="content">
-<p id="output"></p>	
-
-</div>
-</body>
-</html>
+      <div id="content">
+	<p id="output"></p>	
+      </div>
+    </body>
+  </html>
