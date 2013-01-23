@@ -1,4 +1,3 @@
-
 var txt;
 var txt1;
 var txt2="foo";
@@ -12,6 +11,7 @@ $(document).ready(function(){
     }
     
     function parse(xml){
+	alert("Parsing "+xml);
 	$("#output").append("ya");
 	$(this).find("text").each(function(){
 	    $("#output").empty();
@@ -29,10 +29,10 @@ $(document).ready(function(){
 	$("#"+prevBt).fadeTo(1000,1);//fade in previous button
 
 	//$("#output").load("tekst.txt");
-
+	
 	$.ajax({
 	    type: "GET", 
-	    URL:"www.xserror.com/stuff.xml", 
+	    URL:"./stuff.xml", 	    
 	    dataType:"html", 
 	    success: parse,
 	    error: loadfail
