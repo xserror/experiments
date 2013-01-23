@@ -3,6 +3,7 @@ var txt1;
 var txt2="foo";
 var txt3;
 var prevBt="undefined";
+var ajax_xml;
 $(document).ready(function(){
 
 
@@ -11,14 +12,19 @@ $(document).ready(function(){
     }
     
     function parse(xml){
-	alert("Parsing "+xml);
-	$("#output").append("ya");
+	alert("Recieved "+xml);
+	ajax_xml=xml; /**
+			 Polluting global namespace, but it makes the xml-object 
+			 directly available in chrome console
+			 Just for debugging
+		      */
+	$("#output").append("<h3>Received XML: </h3>"
+			    +xml.firstChild.textContent);
 	$(this).find("text").each(function(){
-	    $("#output").empty();
-	    $("#output").append($(this).find('text').text());
-	});
-	//$("#output").append("yo");
-	//$("#output").append($(this).find('text').text());
+		$("#output").empty();
+		$("#output").append($(this).find('text').text());
+	    });
+	
     }
 
     $("button").click(function(){
@@ -31,12 +37,11 @@ $(document).ready(function(){
 	//$("#output").load("tekst.txt");
 	
 	$.ajax({
-	    type: "GET", 
-	    URL:"./stuff.xml", 	    
-	    dataType:"html", 
-	    success: parse,
-	    error: loadfail
-	    
+		crossDomain: true,	    
+		    url:"stuff.xml", //Typo was here! ("URL" not "url")
+		    dataType:"xml", 
+		    success: parse,
+		    error: loadfail	    
 	});
 	prevBt=this.id;//sets previous button
 	//$("#output").html(txt);
